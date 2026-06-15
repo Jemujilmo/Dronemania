@@ -1,0 +1,917 @@
+{
+  "best_time": 0.19,
+  "best_gates": 5,
+  "best_date": "2026-03-11",
+  "attempts": 1,
+  "best_splits": [],
+  "history": [
+    {
+      "phase": 94,
+      "total_steps": 11550720,
+      "avg_gates": 2.562,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.904,
+      "date": "2026-03-09",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 95,
+      "total_steps": 11673600,
+      "avg_gates": 2.438,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.866,
+      "date": "2026-03-09",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 96,
+      "total_steps": 11796480,
+      "avg_gates": 2.312,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.929,
+      "date": "2026-03-09",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 97,
+      "total_steps": 11919360,
+      "avg_gates": 2.188,
+      "best_gates_ep": 4,
+      "best_clean_time": null,
+      "date": "2026-03-09",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 98,
+      "total_steps": 12042240,
+      "avg_gates": 2.5,
+      "best_gates_ep": 4,
+      "best_clean_time": null,
+      "date": "2026-03-09",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 99,
+      "total_steps": 12165120,
+      "avg_gates": 2.375,
+      "best_gates_ep": 4,
+      "best_clean_time": null,
+      "date": "2026-03-09",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 100,
+      "total_steps": 12288000,
+      "avg_gates": 2.125,
+      "best_gates_ep": 3,
+      "best_clean_time": null,
+      "date": "2026-03-09",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 101,
+      "total_steps": 12410880,
+      "avg_gates": 2.375,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.937,
+      "date": "2026-03-09",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 102,
+      "total_steps": 12533760,
+      "avg_gates": 3.0,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.933,
+      "date": "2026-03-09",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 103,
+      "total_steps": 12656640,
+      "avg_gates": 2.75,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.966,
+      "date": "2026-03-09",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 104,
+      "total_steps": 12779520,
+      "avg_gates": 2.188,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.944,
+      "date": "2026-03-09",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 105,
+      "total_steps": 12902400,
+      "avg_gates": 1.938,
+      "best_gates_ep": 4,
+      "best_clean_time": null,
+      "date": "2026-03-09",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 1,
+      "total_steps": 122880,
+      "avg_gates": 2.375,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.921,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 2,
+      "total_steps": 245760,
+      "avg_gates": 2.375,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.952,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 3,
+      "total_steps": 368640,
+      "avg_gates": 2.5,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.84,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 4,
+      "total_steps": 491520,
+      "avg_gates": 2.438,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.996,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 5,
+      "total_steps": 614400,
+      "avg_gates": 2.625,
+      "best_gates_ep": 5,
+      "best_clean_time": 1.015,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 6,
+      "total_steps": 737280,
+      "avg_gates": 2.375,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.913,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 7,
+      "total_steps": 860160,
+      "avg_gates": 2.688,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.996,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 8,
+      "total_steps": 983040,
+      "avg_gates": 2.438,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.958,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 9,
+      "total_steps": 1105920,
+      "avg_gates": 2.812,
+      "best_gates_ep": 4,
+      "best_clean_time": null,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 10,
+      "total_steps": 1228800,
+      "avg_gates": 2.812,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.901,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 11,
+      "total_steps": 1351680,
+      "avg_gates": 2.875,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.853,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 12,
+      "total_steps": 1474560,
+      "avg_gates": 1.938,
+      "best_gates_ep": 3,
+      "best_clean_time": null,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 13,
+      "total_steps": 1597440,
+      "avg_gates": 2.625,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.921,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 14,
+      "total_steps": 1720320,
+      "avg_gates": 2.375,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.884,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 15,
+      "total_steps": 1843200,
+      "avg_gates": 2.562,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.842,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 16,
+      "total_steps": 1966080,
+      "avg_gates": 2.25,
+      "best_gates_ep": 4,
+      "best_clean_time": null,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 17,
+      "total_steps": 2088960,
+      "avg_gates": 3.25,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.894,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 18,
+      "total_steps": 2211840,
+      "avg_gates": 2.625,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.884,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 19,
+      "total_steps": 2334720,
+      "avg_gates": 2.75,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.924,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 20,
+      "total_steps": 2457600,
+      "avg_gates": 2.438,
+      "best_gates_ep": 4,
+      "best_clean_time": null,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 21,
+      "total_steps": 2580480,
+      "avg_gates": 3.125,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.833,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 22,
+      "total_steps": 2703360,
+      "avg_gates": 2.625,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.816,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 23,
+      "total_steps": 2826240,
+      "avg_gates": 2.375,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.951,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 24,
+      "total_steps": 2949120,
+      "avg_gates": 2.25,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.96,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 25,
+      "total_steps": 3072000,
+      "avg_gates": 2.875,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.895,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 26,
+      "total_steps": 3194880,
+      "avg_gates": 2.5,
+      "best_gates_ep": 5,
+      "best_clean_time": 1.069,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 27,
+      "total_steps": 3317760,
+      "avg_gates": 2.312,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.879,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 28,
+      "total_steps": 3440640,
+      "avg_gates": 2.438,
+      "best_gates_ep": 4,
+      "best_clean_time": null,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 29,
+      "total_steps": 3563520,
+      "avg_gates": 2.938,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.912,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 30,
+      "total_steps": 3686400,
+      "avg_gates": 2.812,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.929,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 31,
+      "total_steps": 3809280,
+      "avg_gates": 2.438,
+      "best_gates_ep": 4,
+      "best_clean_time": null,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 32,
+      "total_steps": 3932160,
+      "avg_gates": 2.25,
+      "best_gates_ep": 4,
+      "best_clean_time": null,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 33,
+      "total_steps": 4055040,
+      "avg_gates": 2.188,
+      "best_gates_ep": 4,
+      "best_clean_time": null,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 34,
+      "total_steps": 4177920,
+      "avg_gates": 1.875,
+      "best_gates_ep": 4,
+      "best_clean_time": null,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 35,
+      "total_steps": 4300800,
+      "avg_gates": 2.25,
+      "best_gates_ep": 5,
+      "best_clean_time": 1.015,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 36,
+      "total_steps": 4423680,
+      "avg_gates": 2.688,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.946,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 37,
+      "total_steps": 4546560,
+      "avg_gates": 2.688,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.913,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 38,
+      "total_steps": 4669440,
+      "avg_gates": 2.188,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.927,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 39,
+      "total_steps": 4792320,
+      "avg_gates": 2.625,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.936,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 40,
+      "total_steps": 4915200,
+      "avg_gates": 2.375,
+      "best_gates_ep": 5,
+      "best_clean_time": 1.023,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 41,
+      "total_steps": 5038080,
+      "avg_gates": 2.125,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.958,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 42,
+      "total_steps": 5160960,
+      "avg_gates": 3.188,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.842,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 43,
+      "total_steps": 5283840,
+      "avg_gates": 2.562,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.889,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 44,
+      "total_steps": 5406720,
+      "avg_gates": 2.438,
+      "best_gates_ep": 4,
+      "best_clean_time": null,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 45,
+      "total_steps": 5529600,
+      "avg_gates": 2.062,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.965,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 46,
+      "total_steps": 5652480,
+      "avg_gates": 1.938,
+      "best_gates_ep": 3,
+      "best_clean_time": null,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 47,
+      "total_steps": 5775360,
+      "avg_gates": 2.312,
+      "best_gates_ep": 5,
+      "best_clean_time": 1.009,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 48,
+      "total_steps": 5898240,
+      "avg_gates": 2.688,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.89,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 49,
+      "total_steps": 6021120,
+      "avg_gates": 2.375,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.981,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 50,
+      "total_steps": 6144000,
+      "avg_gates": 2.312,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.961,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 51,
+      "total_steps": 6266880,
+      "avg_gates": 1.812,
+      "best_gates_ep": 4,
+      "best_clean_time": null,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 52,
+      "total_steps": 6389760,
+      "avg_gates": 2.25,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.965,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 53,
+      "total_steps": 6512640,
+      "avg_gates": 2.562,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.852,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 54,
+      "total_steps": 6635520,
+      "avg_gates": 2.312,
+      "best_gates_ep": 4,
+      "best_clean_time": null,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 55,
+      "total_steps": 6758400,
+      "avg_gates": 2.125,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.883,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 56,
+      "total_steps": 6881280,
+      "avg_gates": 2.0,
+      "best_gates_ep": 5,
+      "best_clean_time": 1.013,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 57,
+      "total_steps": 7004160,
+      "avg_gates": 2.375,
+      "best_gates_ep": 4,
+      "best_clean_time": null,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 58,
+      "total_steps": 7127040,
+      "avg_gates": 2.375,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.899,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 59,
+      "total_steps": 7249920,
+      "avg_gates": 2.5,
+      "best_gates_ep": 5,
+      "best_clean_time": 1.001,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 60,
+      "total_steps": 7372800,
+      "avg_gates": 2.0,
+      "best_gates_ep": 3,
+      "best_clean_time": null,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 61,
+      "total_steps": 7495680,
+      "avg_gates": 2.125,
+      "best_gates_ep": 4,
+      "best_clean_time": null,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 62,
+      "total_steps": 7618560,
+      "avg_gates": 2.625,
+      "best_gates_ep": 4,
+      "best_clean_time": null,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 63,
+      "total_steps": 7741440,
+      "avg_gates": 2.5,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.825,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 64,
+      "total_steps": 7864320,
+      "avg_gates": 2.438,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.894,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 65,
+      "total_steps": 7987200,
+      "avg_gates": 2.062,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.966,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 66,
+      "total_steps": 8110080,
+      "avg_gates": 2.438,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.933,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 67,
+      "total_steps": 8232960,
+      "avg_gates": 2.5,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.942,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 68,
+      "total_steps": 8355840,
+      "avg_gates": 2.188,
+      "best_gates_ep": 4,
+      "best_clean_time": null,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 69,
+      "total_steps": 8478720,
+      "avg_gates": 2.125,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.986,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 70,
+      "total_steps": 8601600,
+      "avg_gates": 2.312,
+      "best_gates_ep": 3,
+      "best_clean_time": null,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 71,
+      "total_steps": 8724480,
+      "avg_gates": 2.062,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.887,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 72,
+      "total_steps": 8847360,
+      "avg_gates": 1.938,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.95,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 73,
+      "total_steps": 8970240,
+      "avg_gates": 2.125,
+      "best_gates_ep": 4,
+      "best_clean_time": null,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 74,
+      "total_steps": 9093120,
+      "avg_gates": 2.688,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.971,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 75,
+      "total_steps": 9216000,
+      "avg_gates": 2.25,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.967,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 76,
+      "total_steps": 9338880,
+      "avg_gates": 2.375,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.982,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 77,
+      "total_steps": 9461760,
+      "avg_gates": 2.188,
+      "best_gates_ep": 4,
+      "best_clean_time": null,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 1,
+      "total_steps": 122880,
+      "avg_gates": 4.312,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.197,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 2,
+      "total_steps": 245760,
+      "avg_gates": 4.5,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.2,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 3,
+      "total_steps": 368640,
+      "avg_gates": 4.125,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.199,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 4,
+      "total_steps": 491520,
+      "avg_gates": 4.25,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.19,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 1,
+      "total_steps": 122880,
+      "avg_gates": 2.75,
+      "best_gates_ep": 5,
+      "best_clean_time": 1.126,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 5,
+      "total_steps": 614400,
+      "avg_gates": 4.125,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.2,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 6,
+      "total_steps": 737280,
+      "avg_gates": 4.062,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.198,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 7,
+      "total_steps": 860160,
+      "avg_gates": 3.625,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.206,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 8,
+      "total_steps": 983040,
+      "avg_gates": 3.625,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.196,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 9,
+      "total_steps": 1105920,
+      "avg_gates": 4.438,
+      "best_gates_ep": 5,
+      "best_clean_time": 0.206,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    },
+    {
+      "phase": 2,
+      "total_steps": 245760,
+      "avg_gates": 2.875,
+      "best_gates_ep": 5,
+      "best_clean_time": 1.061,
+      "date": "2026-03-11",
+      "source": "rl_policy"
+    }
+  ],
+  "rl_last_avg_gates": 4.438,
+  "rl_best_time": 0.19,
+  "rl_best_gates": 5,
+  "rl_best_date": "2026-03-11",
+  "rl_vision_last_avg_gates": 2.875,
+  "rl_vision_best_time": 0.766,
+  "rl_vision_best_gates": 5,
+  "rl_vision_best_date": "2026-03-09"
+}

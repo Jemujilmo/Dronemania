@@ -1,0 +1,74 @@
+# Autonomy Stack Configuration - Racing Mode
+
+autonomy:
+  mode: "simulation"  # simulation or hardware
+  control_rate_hz: 100  # Command output rate (PyBullet runs faster)
+  deterministic: true
+  
+# Simulator Configuration
+simulator:
+  type: "pybullet"
+  sim_rate: 240  # PyBullet simulation rate
+  max_episode_steps: 5000
+  gui_enabled: true  # Show PyBullet visualization
+  
+# Perception Module
+perception:
+  enabled: true
+  camera:
+    input_resolution: [640, 480]
+    processing_resolution: [320, 240]
+  gate_detection:
+    method: "color_threshold"  # Fast classical CV
+    min_confidence: 0.5
+    color_ranges:  # HSV ranges for gate detection (adaptive)
+      lower: [0, 50, 50]
+      upper: [180, 255, 255]  # Accept all hues initially
+  obstacle_avoidance:
+    enabled: true
+    safety_margin: 0.5
+    
+# State Estimation Module  
+state_estimation:
+  enabled: true
+  method: "ekf"  # Extended Kalman Filter
+  imu_weight: 0.5
+  vision_weight: 0.5
+  initial_state:
+    position: [0.0, 0.0, 1.0]
+    velocity: [0.0, 0.0, 0.0]
+    
+# Planning Module - Tuned for vision-based navigation
+planning:
+  enabled: true
+  method: "reactive"  # Direct vision→velocity (fast)
+  lookahead_distance: 2.0  # Shorter lookahead for tighter tracking
+  target_velocity: 1.5  # Conservative speed for better path following
+  collision_check: true
+  replan_rate_hz: 20
+  
+# Control Module - Racing optimized
+control:
+  type: "pid"
+  pid_gains:
+    position:
+      kp: 1.2  # Higher - aggressive response
+      ki: 0.02
+      kd: 0.3
+    velocity:
+      kp: 0.5
+      ki: 0.01
+      kd: 0.1
+    yaw:
+      kp: 1.5  # Higher - quick turns
+      ki: 0.05
+      kd: 0.3
+  max_velocity: 15.0  # m/s - push limits
+  max_angular_velocity: 3.0  # rad/s
+  
+# Logging
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  log_to_file: false
+  log_path: "./logs"
+

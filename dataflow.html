@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dronemania — Training Data Flow</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0d1117;
+    color: #e6edf3;
+    font-family: 'Segoe UI', sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  header {
+    padding: 10px 20px;
+    background: #161b22;
+    border-bottom: 1px solid #30363d;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+  }
+  header h1 { font-size: 15px; font-weight: 600; color: #58a6ff; }
+  header span { font-size: 12px; color: #8b949e; }
+  .controls {
+    margin-left: auto;
+    display: flex;
+    gap: 8px;
+  }
+  button {
+    background: #21262d;
+    border: 1px solid #30363d;
+    color: #e6edf3;
+    padding: 5px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+  }
+  button:hover { background: #30363d; }
+  #diagram-container {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+  }
+  #diagram-container svg {
+    width: 100%;
+    height: 100%;
+  }
+  .mermaid {
+    width: 100%;
+    height: 100%;
+  }
+  .legend {
+    position: absolute;
+    bottom: 14px;
+    right: 16px;
+    background: #161b22cc;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 12px;
+    color: #8b949e;
+    line-height: 1.8;
+    pointer-events: none;
+  }
+  .legend b { color: #e6edf3; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Dronemania — Vision Training Data Flow</h1>
+  <span>Phase 13+ · 12 parallel envs · PPO [256,256] from BC warm-start</span>
+  <div class="controls">
+    <button onclick="panZoom.resetZoom(); panZoom.resetPan()">Reset View</button>
+    <button onclick="panZoom.zoomIn()">＋ Zoom In</button>
+    <button onclick="panZoom.zoomOut()">－ Zoom Out</button>
+    <button onclick="window.print()">Export / Print</button>
+  </div>
+</header>
+
+<div id="diagram-container">
+<div class="mermaid" id="mermaid-src">
+flowchart TD
+    subgraph ENV["🔄  Per-Step Loop  ×12 parallel envs"]
+        direction TB
+
+        subgraph TRACK["Track Generation — racing_simulator.py · _generate_track()"]
+            SEED["np.random seed\n(fresh every reset)"]
+            SEED --> LAYOUT["Gate positions\nX: rng.uniform 8–12 m per gate\nY: 3 sine waves  random phases + amps\nZ: random base 2.2–3.4 m  random amp"]
+            LAYOUT --> GATES["5 Gate objects\n(position xyz, orientation rpy, shape)"]
+        end
+
+        subgraph SIM["Physics — drone_physics.py"]
+            MOTORS["4 motor thrust commands\n[0.2 – 1.0]"]
+            PHYSICS["6-DOF integration\ndt = 1/240 s\nsubsteps = 4  →  60 Hz decisions"]
+            STATE["Drone state\npos xyz  |  vel xyz\norientation rpy  |  ang_vel xyz"]
+            MOTORS --> PHYSICS --> STATE
+        end
+
+        subgraph CAM["Camera Render — racing_simulator.py · _render_camera_view()"]
+            FRAME["240 × 320 RGB frame\nPerspective-projected gate shapes\nSky + ground backdrop\nFOV = 110°\nFast-render path in training mode"]
+        end
+
+        subgraph DET["Gate Detector — gate_detector.py · SimGateDetector.detect()"]
+            HSV["HSV colour threshold"]
+            CONTOUR["Contour finding\n→ bounding box"]
+            CAMVEC["5-float camera vector\n[0] bearing_x   −1 left … +1 right\n[1] bearing_y   −1 down … +1 up\n[2] cam_dist    0 close … 1 far\n[3] visibility  0 hidden … 1 seen\n[4] approach angle quality"]
+            HSV --> CONTOUR --> CAMVEC
+        end
+
+        STATE --> FRAME
+        GATES --> FRAME
+        FRAME --> HSV
+
+        subgraph OBS["Observation Vector — drone_gym_env.py · _get_camera_obs()"]
+            OBS20["20-float numpy array  float32\n────────────────────────────────────\n slot 0–4    camera vector  from detector\n slot 5–7    velocity vx vy vz  IMU\n slot 8–10   orientation rpy   IMU\n slot 11–13  angular velocity  IMU\n slot 14     yaw_rate  clipped\n slot 15     speed_norm  |v|/10\n slot 16–19  zeros  reserved"]
+        end
+
+        CAMVEC --> OBS20
+        STATE --> OBS20
+    end
+
+    subgraph PPO["PPO Agent — stable-baselines3"]
+        POLICY["MlpPolicy  [256, 256]  Tanh\nLoaded from DAgger-BC warm-start\nlog_std = −1.0 at load time"]
+        ACTION["4-float action  [−1, +1]\nvx_norm  vy_norm  vz_norm  yaw_norm"]
+        POLICY --> ACTION
+    end
+
+    subgraph CTRL["Inner PD Control — drone_gym_env.py · _velocity_to_motors()"]
+        SCALE["Scale action to m/s\nvx ×8   vy ×8   vz ×3   yaw ×1.5 rad/s"]
+        PD["PD attitude loop\nKp_roll=4.0  Kd=1.8\nKp_pitch=3.5  Kd=1.5\nKp_yaw=1.2   Kd=0.9\nrate-limited tilt  max 2.5°/step"]
+        SCALE --> PD
+    end
+
+    subgraph REWARD["Reward Shaping — drone_gym_env.py · step()"]
+        R1["+0.30 × visibility × fwd_norm\n  fly into visible gate"]
+        R2["+0.08 × visibility × lateral_align\n  correct horizontal heading"]
+        R3["+0.08 × visibility × vertical_align\n  correct altitude"]
+        R4["+0.03 × yaw_speed  when gate NOT visible\n  yaw-scan bonus"]
+        R5["−0.05 × max 0, 1−speed_norm\n  idleness penalty"]
+        R6["−0.09 × reverse_norm\n  backward flight penalty"]
+        R7["+80 × quality_mult + momentum_bonus\n  gate pass  quality 0.5–1.5  momentum 10×gates capped 100"]
+        R8["−25 on crash or OOB"]
+        R9["+200 + time_bonus on course complete"]
+        R10["−0.03 per step net time cost"]
+    end
+
+    subgraph CUR["CurriculumCallback — self_train.py"]
+        CURBOX["Rolling avg gates over last 40 eps\nAdvance spawn gate when\n  avg ≥ frontier + 0.5\n  for 2 consecutive 8,192-step checks\nFrontier ratio: 50% envs at new gate\n                50% envs at gate 0"]
+    end
+
+    subgraph STORAGE["Checkpoint Storage"]
+        CKPT["trained_models/rl_vision_policy_latest.zip\n  saved after every 100k-step phase"]
+        BEST["trained_models/rl_vision_policy_best.zip\n  saved when avg_gates is a new high"]
+        BACKUP["trained_models/backups/train_avgX_phY_TIMESTAMP.zip\n  auto-pruned to newest 20"]
+        LOG["records/vision_training_log.jsonl\n  one JSON line per phase\n  phase · total_steps · avg_gates\n  best_ep · best_clean_s · trend"]
+    end
+
+    OBS20 -->|"obs  20 floats"| POLICY
+    ACTION --> SCALE
+    PD --> MOTORS
+    STATE --> PD
+    REWARD -->|"float reward"| PPO
+    GATES -->|"check_gates()"| REWARD
+    STATE -->|"crash / OOB check"| REWARD
+    CUR -->|"sets curriculum_gate on each env"| GATES
+    PPO -->|"phase complete"| CKPT
+    CKPT --> BEST
+    CKPT --> BACKUP
+    PPO -->|"phase eval log"| LOG
+</div>
+</div>
+
+<div class="legend">
+  <b>Mouse controls</b><br>
+  Scroll — zoom &nbsp;|&nbsp; Click + drag — pan<br>
+  Double-click — zoom in &nbsp;|&nbsp; Shift+scroll — fast zoom<br>
+  <br>
+  <b>Critical path</b><br>
+  Camera frame → HSV detector → obs[0:4] → PPO → action → PD → motors → physics
+</div>
+
+<script>
+mermaid.initialize({
+  startOnLoad: false,
+  theme: 'dark',
+  themeVariables: {
+    darkMode: true,
+    background: '#0d1117',
+    mainBkg: '#161b22',
+    nodeBorder: '#30363d',
+    clusterBkg: '#1c2128',
+    titleColor: '#58a6ff',
+    edgeLabelBackground: '#161b22',
+    lineColor: '#58a6ff',
+  },
+  flowchart: { curve: 'basis', padding: 20 },
+});
+
+async function render() {
+  const src = document.getElementById('mermaid-src');
+  const code = src.textContent.trim();
+  const container = document.getElementById('diagram-container');
+
+  const { svg } = await mermaid.render('theGraph', code);
+  container.innerHTML = svg;
+
+  // Make SVG fill container
+  const svgEl = container.querySelector('svg');
+  svgEl.style.width  = '100%';
+  svgEl.style.height = '100%';
+  svgEl.removeAttribute('height');
+  svgEl.removeAttribute('width');
+
+  // Re-add legend
+  const legend = document.createElement('div');
+  legend.className = 'legend';
+  legend.innerHTML = `
+    <b>Mouse controls</b><br>
+    Scroll — zoom &nbsp;|&nbsp; Click + drag — pan<br>
+    Double-click — zoom in &nbsp;|&nbsp; Right-click + drag — pan<br>
+    <br>
+    <b>Critical path</b><br>
+    Camera frame → HSV detector → obs[0:4]<br>→ PPO → action → PD → motors → physics
+  `;
+  container.appendChild(legend);
+
+  // Attach pan-zoom
+  window.panZoom = svgPanZoom(svgEl, {
+    zoomEnabled: true,
+    controlIconsEnabled: false,
+    fit: true,
+    center: true,
+    minZoom: 0.1,
+    maxZoom: 10,
+    zoomScaleSensitivity: 0.3,
+    dblClickZoomEnabled: true,
+    mouseWheelZoomEnabled: true,
+  });
+}
+
+render();
+</script>
+</body>
+</html>

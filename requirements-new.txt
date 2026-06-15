@@ -1,0 +1,23 @@
+# Core Dependencies
+numpy>=1.24.0
+opencv-python>=4.8.0
+pillow>=10.0.0
+pyyaml>=6.0
+
+# Simulation - PyBullet for quadrotor physics
+pybullet>=3.2.5
+gymnasium>=0.29.0
+
+# Control
+simple-pid>=1.0.1
+filterpy>=1.4.5
+scipy>=1.11.0
+
+# Utilities
+matplotlib>=3.7.0
+tqdm>=4.65.0
+
+# Development
+pytest>=7.4.0
+black>=23.7.0
+flake8>=6.1.0

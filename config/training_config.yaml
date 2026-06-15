@@ -1,0 +1,45 @@
+# Training Configuration
+# Uses RacingEnv (src/simulation/drone_gym_env.py) with MlpPolicy.
+# Obs: 20-float state vector. Actions: 4-float velocity setpoints.
+# For continuous self-improvement use self_train.py; this file is used by train.py.
+
+training:
+  algorithm: "PPO"
+  total_timesteps: 1000000
+  learning_rate: 0.0003
+  batch_size: 64
+  n_steps: 2048
+  gamma: 0.99
+
+# Environment Configuration
+environment:
+  simulation: "custom"      # RacingEnv wrapping RacingSimulator
+  substeps: 4               # physics substeps per RL action (~15 Hz effective)
+  max_episode_steps: 2000
+  obs_dim: 20               # [to_gate(3), vel(3), ori(3), ang_vel(3), normal(3), next_gate(3), dist(1), progress(1)]
+  action_dim: 4             # [vx, vy, vz, yaw_rate] scaled ±1 -> ±8/±3 m/s / ±1.5 rad/s
+  reward_shaping:
+    forward_progress: 0.12  # per step, dot(vel, gate_dir)
+    time_penalty: -0.06     # per step
+    smoothness_penalty: -0.002  # * |ang_vel|^2 per step
+    gate_pass: 50.0         # * quality [0.5-1.5]
+    race_complete: 200.0    # + time bonus max(0, 300-elapsed)
+    crash_penalty: -60.0
+
+# Drone Configuration
+drone:
+  max_velocity: 10.0        # m/s
+  max_angular_velocity: 3.14 # rad/s
+  physics_rate: 240          # Hz (DronePhysics internal)
+
+# Model Configuration
+model:
+  policy: "MlpPolicy"
+  activation: "relu"
+  net_arch: [256, 256]
+
+# Logging
+logging:
+  tensorboard_log: "./logs/tensorboard"
+  save_freq: 10000
+  checkpoint_dir: "./trained_models"
